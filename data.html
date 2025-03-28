@@ -1,0 +1,21 @@
+<!-- Keep navigation same as original -->
+<div class="container mt-4">
+  <h1>Meal Data Analysis</h1>
+  
+  <form method="get" class="mb-3">
+      <input type="number" step="any" name="min_calories" 
+            value="{{ current_filter }}" placeholder="Min Calories">
+      <button type="submit" class="btn btn-primary">Filter</button>
+  </form>
+
+  {% if plot_url %}
+  <h2>Calories Distribution</h2>
+  <img src="data:image/png;base64,{{ plot_url }}" class="img-fluid">
+  {% endif %}
+
+  <h2 class="mt-4">CSV Data</h2>
+  {{ csv_table|safe }}
+
+  <h2 class="mt-4">Database Data</h2>
+  {{ db_table|safe }}
+</div>
